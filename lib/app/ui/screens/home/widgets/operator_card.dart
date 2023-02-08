@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ussd_misr/app/ui/screens/home/home_screen.dart';
+import 'package:ussd_misr/app/domain/models/operator.dart';
 
 class OperatorCard extends StatelessWidget {
   const OperatorCard({
@@ -13,7 +13,11 @@ class OperatorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () => Navigator.pushNamed(
+        context,
+        '/service',
+        arguments: operatorData.name,
+      ),
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.zero,
         backgroundColor: Colors.white,

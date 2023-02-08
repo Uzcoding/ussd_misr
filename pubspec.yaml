@@ -11,7 +11,10 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  auto_size_text: ^3.0.0
+  in_app_review: ^2.0.6
   flutter_svg: ^1.1.6
+  share_plus: ^6.3.0
   sizer: ^2.0.15
 
 dev_dependencies:

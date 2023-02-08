@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ussd_misr/app/ui/screens/home/home_screen.dart';
+
 import 'package:sizer/sizer.dart';
+
+import 'ui/screens/screens.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -9,9 +11,13 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, deviceType) => MaterialApp(
+        theme: ThemeData(
+          iconTheme: const IconThemeData(color: Colors.blueAccent),
+        ),
         debugShowCheckedModeBanner: false,
         routes: {
-          '/': (context) => const HomeScreen(),
+          '/': (context) => const TabScreen(),
+          '/service': (context) => const ServiceScreen(),
         },
         initialRoute: '/',
       ),
