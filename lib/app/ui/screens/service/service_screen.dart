@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/widgets.dart';
+
 class ServiceScreen extends StatelessWidget {
   const ServiceScreen({Key? key}) : super(key: key);
 
@@ -16,39 +18,48 @@ class ServiceScreen extends StatelessWidget {
     }
   }
 
-  static final tabBar = TabBar(
-    isScrollable: true,
-    tabs: [
-      const Tab(icon: Icon(Icons.looks_one), child: const Text('Tab One')),
-      const Tab(icon: Icon(Icons.looks_two), text: 'Tab Two'),
-      const Tab(icon: Icon(Icons.looks_3), text: 'Tab Three'),
-      const Tab(icon: Icon(Icons.looks_3), text: 'Tab Three'),
-      const Tab(icon: Icon(Icons.looks_3), text: 'Tab Three'),
-      const Tab(icon: Icon(Icons.looks_3), text: 'Tab Three'),
-      const Tab(icon: Icon(Icons.looks_3), text: 'Tab Three'),
-    ],
-  );
-
   @override
   Widget build(BuildContext context) {
     final operatorName = ModalRoute.of(context)!.settings.arguments as String;
-
-    return DefaultTabController(
-      length: 7,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: getOperatorColor(operatorName),
-          title: Text(operatorName),
-          bottom: PreferredSize(
-            preferredSize: tabBar.preferredSize,
-            child: Material(
-              color: Colors.white,
-              child: tabBar,
+    final operatorColor = getOperatorColor(operatorName);
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: operatorColor,
+        title: Text(operatorName),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 50.0,
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8.0,
+                  horizontal: 10.0,
+                ),
+                itemCount: 5,
+                scrollDirection: Axis.horizontal,
+                separatorBuilder: (context, index) =>
+                    const SizedBox(width: 10.0),
+                itemBuilder: (context, index) => OperatorCategoryButton(
+                  activeColor: operatorColor,
+                  isActive: index % 2 == 0,
+                ),
+              ),
             ),
-          ),
-        ),
-        body: Column(
-          children: <Widget>[],
+            Expanded(
+              child: ListView.separated(
+                itemCount: 10,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 24.0,
+                ).copyWith(top: 14.0),
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 15.0),
+                itemBuilder: (context, index) =>
+                    OperatorTariffCard(operatorColor: operatorColor),
+              ),
+            ),
+          ],
         ),
       ),
     );
