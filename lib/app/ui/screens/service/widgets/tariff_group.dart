@@ -25,6 +25,7 @@ class TariffInfoGroup extends StatelessWidget {
             info,
             style: const TextStyle(
               fontSize: 18.0,
+              color: Colors.black,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -46,6 +47,7 @@ class TariffInfoGroup extends StatelessWidget {
             ),
             style: const TextStyle(
               fontSize: 20.0,
+              color: Colors.black,
               fontWeight: FontWeight.w500,
             ),
           ),

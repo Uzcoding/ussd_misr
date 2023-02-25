@@ -2,7 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:in_app_review/in_app_review.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:ussd_misr/app/app.dart';
+import 'package:ussd_misr/app/constants/strings.dart';
 
 class SettingsTab extends StatefulWidget {
   const SettingsTab({
@@ -15,12 +18,6 @@ class SettingsTab extends StatefulWidget {
 
 class _SettingsTabState extends State<SettingsTab> {
   final InAppReview inAppReview = InAppReview.instance;
-  bool isDarkMode = false;
-
-  void toggleTheme(bool newValue) {
-    isDarkMode = newValue;
-    setState(() {});
-  }
 
   void shareApp() {
     Share.share('https://google.com');
@@ -36,6 +33,8 @@ class _SettingsTabState extends State<SettingsTab> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = context.watch<AppState>().isDarkMode;
+
     return ListView(
       physics: const RangeMaintainingScrollPhysics(),
       children: [
@@ -46,18 +45,19 @@ class _SettingsTabState extends State<SettingsTab> {
           ),
           trailing: Switch.adaptive(
             value: isDarkMode,
-            onChanged: toggleTheme,
+            onChanged: (_) => context.read<AppState>().toggleTheme(),
           ),
-          title: const Text('Theme'),
-          subtitle: const Text('Light mode'),
+          title: Text(AppStrings.theme),
+          subtitle: Text(
+              '${isDarkMode ? AppStrings.dark : AppStrings.light} ${AppStrings.mode}'),
         ),
-        const ListTile(
-          leading: Icon(
+        ListTile(
+          leading: const Icon(
             Icons.language,
             color: Colors.blueAccent,
           ),
-          title: Text('Language'),
-          subtitle: Text('English'),
+          title: Text(AppStrings.language),
+          subtitle: const Text('English'),
         ),
         ListTile(
           onTap: reviewApp,
@@ -65,7 +65,7 @@ class _SettingsTabState extends State<SettingsTab> {
             Icons.star,
             color: Colors.yellow.shade800,
           ),
-          title: const Text('Rate app'),
+          title: Text(AppStrings.rate),
         ),
         ListTile(
           onTap: shareApp,
@@ -73,7 +73,7 @@ class _SettingsTabState extends State<SettingsTab> {
             Icons.share,
             color: Colors.blueAccent,
           ),
-          title: const Text('Share'),
+          title: Text(AppStrings.share),
         ),
       ],
     );

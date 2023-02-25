@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ussd_misr/app/constants/strings.dart';
 import 'package:ussd_misr/app/domain/models/operator.dart';
 import 'package:ussd_misr/app/ui/screens/screens.dart';
 import 'package:ussd_misr/resources/resources.dart';
@@ -30,16 +32,12 @@ class _TabScreenState extends State<TabScreen> {
 
   @override
   Widget build(BuildContext context) {
+    context.setLocale(const Locale('uz'));
     return Scaffold(
       appBar: AppBar(
         elevation: 2,
-        backgroundColor: Colors.white,
         title: Text(
-          _currentDestination == 0 ? 'USSD MISR' : 'Settings',
-          style: const TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w600,
-          ),
+          _currentDestination == 0 ? AppStrings.appName : AppStrings.settings,
         ),
       ),
       body: _tabs[_currentDestination],
@@ -47,15 +45,14 @@ class _TabScreenState extends State<TabScreen> {
         selectedIndex: _currentDestination,
         onDestinationSelected: onDestinationSelected,
         height: 60.0,
-        backgroundColor: Colors.white,
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: const Icon(Icons.home),
+            label: AppStrings.home,
           ),
           NavigationDestination(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: const Icon(Icons.settings),
+            label: AppStrings.settings,
           ),
         ],
       ),

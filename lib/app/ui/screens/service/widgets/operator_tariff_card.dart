@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ussd_misr/app/constants/strings.dart';
 
 import 'tariff_group.dart';
 
@@ -26,7 +27,7 @@ class OperatorTariffCard extends StatelessWidget {
           children: <Widget>[
             Center(
               child: Text(
-                'To\'plam 4 MB',
+                '${AppStrings.collection} 4 MB',
                 style: TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.w600,
@@ -36,20 +37,20 @@ class OperatorTariffCard extends StatelessWidget {
             ),
             const SizedBox(height: 20.0),
             TariffInfoGroup(
-              info: 'To\'plam narxi',
+              info: '${AppStrings.collection} ${AppStrings.price}',
               price: '400',
               operatorColor: operatorColor,
             ),
             TariffInfoGroup(
-              info: 'Berilgan trafik hajmi',
+              info: AppStrings.trafficVolume,
               price: '4',
               symbol: 'MB',
               operatorColor: operatorColor,
             ),
             TariffInfoGroup(
-              info: 'Amal qilish muddati',
+              info: AppStrings.validityPeriod,
               price: '1',
-              symbol: 'kun',
+              symbol: AppStrings.day,
               operatorColor: operatorColor,
             ),
             const SizedBox(height: 25.0),
@@ -64,9 +65,9 @@ class OperatorTariffCard extends StatelessWidget {
                   ),
                   backgroundColor: operatorColor,
                 ),
-                child: const Text(
-                  'Connect',
-                  style: TextStyle(
+                child: Text(
+                  AppStrings.connect,
+                  style: const TextStyle(
                     fontSize: 17.0,
                     color: Colors.white,
                     fontWeight: FontWeight.w500,

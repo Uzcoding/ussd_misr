@@ -1,0 +1,18 @@
+{
+    "app_name": "USSD MISR",
+    "home": "Asosiy",
+    "settings": "Sozlamalar",
+    "theme": "Mavzu",
+    "dark": "Qora",
+    "light": "Oq",
+    "mode": "rejim",
+    "language": "Til",
+    "price": "narxi",
+    "rate": "Ilovaga baho berish",
+    "share": "Ilovani ulashish",
+    "collection": "To'plam",
+    "traffic_volume": "Berilgan trafik hajmi",
+    "validity_period": "Amal qilish muddati",
+    "day": "kun",
+    "connect": "Ulanish"
+}

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:ussd_misr/app/app.dart';
 import 'package:ussd_misr/app/domain/models/operator.dart';
 
 class OperatorCard extends StatelessWidget {
@@ -12,6 +14,7 @@ class OperatorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = context.watch<AppState>().isDarkMode;
     return ElevatedButton(
       onPressed: () => Navigator.pushNamed(
         context,
@@ -20,7 +23,8 @@ class OperatorCard extends StatelessWidget {
       ),
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.zero,
-        backgroundColor: Colors.white,
+        backgroundColor:
+            isDarkMode ? Colors.white.withOpacity(.9) : Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
