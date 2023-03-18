@@ -1,0 +1,20 @@
+{
+    "app_name": "USSD MISR",
+    "home": "Главная",
+    "settings": "Настройки",
+    "theme": "Тема",
+    "dark": "Черный",
+    "light": "Светлый",
+    "mode": "режим",
+    "language": "Язык",
+    "price": "расходы",
+    "rate": "Оцените приложение",
+    "share": "Поделитесь приложением",
+    "collection": "Коллекция",
+    "traffic_volume": "Учитывая объем трафика",
+    "validity_period": "Срок годности",
+    "day": "день",
+    "connect": "Связь",
+    "save": "Сохранить",
+    "change_language": "Выберите язык"
+}

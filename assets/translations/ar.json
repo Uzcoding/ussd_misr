@@ -1,0 +1,20 @@
+{
+    "app_name": "USSD MISR",
+    "home": "الرئيسية",
+    "settings": "الإعدادات",
+    "theme": "الموضوع",
+    "dark": "أسود",
+    "light": "أبيض",
+    "mode": "الوضع",
+    "language": "اللغة",
+    "price": "النفقات",
+    "rate": "معدل التطبيق",
+    "share": "مشاركة التطبيق",
+    "collection": "جمع",
+    "traffic_volume": "النظر في حجم حركة المرور",
+    "validity_period": "تاريخ انتهاء الصلاحية",
+    "day": "اليوم",
+    "connect": "اتصال",
+    "save": "حفظ",
+    "change_language": "اختر لغة"
+}

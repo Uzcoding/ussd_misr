@@ -51,6 +51,13 @@
 	<array>
 		<string>en</string>
 		<string>uz</string>
+		<string>ar</string>
+		<string>ru</string>
+		<string>uz-cyrilic</string>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tel</string>
 	</array>
 </dict>
 </plist>

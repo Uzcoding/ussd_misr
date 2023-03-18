@@ -1,0 +1,20 @@
+{
+    "app_name": "USSD MISR",
+    "home": "Асосий",
+    "settings": "Созламалар",
+    "theme": "Мавзу",
+    "dark": "Қора",
+    "light": "Оқ",
+    "mode": "режим",
+    "language": "Тил",
+    "price": "нархи",
+    "rate": "Иловага баҳо бериш",
+    "share": "Иловани улашиш",
+    "collection": "Тўплам",
+    "traffic_volume": "Берилган трафик ҳажми",
+    "validity_period": "Амал қилиш муддати",
+    "day": "кун",
+    "connect": "Уланиш",
+    "save": "Сақлаш",
+    "change_language": "Тилни танланг"
+}

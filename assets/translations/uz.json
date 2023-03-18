@@ -14,5 +14,7 @@
     "traffic_volume": "Berilgan trafik hajmi",
     "validity_period": "Amal qilish muddati",
     "day": "kun",
-    "connect": "Ulanish"
+    "connect": "Ulanish",
+    "save": "Saqlash",
+    "change_language": "Tilni tanlang"
 }

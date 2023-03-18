@@ -14,5 +14,7 @@
     "traffic_volume": "Given traffic volume",
     "validity_period": "Validity period",
     "day": "day",
-    "connect": "Connect"
+    "connect": "Connect",
+    "save": "Save",
+    "change_language": "Change language"
 }

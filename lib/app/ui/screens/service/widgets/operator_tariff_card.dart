@@ -1,15 +1,31 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:ussd_misr/app/constants/strings.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+import 'package:ussd_misr/app/domain/models/internet_bundle.dart';
+
+import 'package:ussd_misr/translations/locale_keys.g.dart';
 
 import 'tariff_group.dart';
 
-class OperatorTariffCard extends StatelessWidget {
-  const OperatorTariffCard({
+class OperatorInternetCard extends StatelessWidget {
+  const OperatorInternetCard({
     Key? key,
     required this.operatorColor,
+    required this.data,
   }) : super(key: key);
 
+  final InternetBundle data;
   final Color operatorColor;
+
+  Future<void> launchPhoneDialer(String contactNumber) async {
+    final result = 'tel://$contactNumber';
+    try {
+      await launchUrlString(result);
+    } catch (error) {
+      debugPrint(error.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +43,7 @@ class OperatorTariffCard extends StatelessWidget {
           children: <Widget>[
             Center(
               child: Text(
-                '${AppStrings.collection} 4 MB',
+                data.name,
                 style: TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.w600,
@@ -37,20 +53,20 @@ class OperatorTariffCard extends StatelessWidget {
             ),
             const SizedBox(height: 20.0),
             TariffInfoGroup(
-              info: '${AppStrings.collection} ${AppStrings.price}',
-              price: '400',
+              info: '${LocaleKeys.collection.tr()} ${LocaleKeys.price.tr()}',
+              price: data.price.toString(),
               operatorColor: operatorColor,
             ),
             TariffInfoGroup(
-              info: AppStrings.trafficVolume,
-              price: '4',
+              info: LocaleKeys.traffic_volume.tr(),
+              price: data.internetTraffic.toString(),
               symbol: 'MB',
               operatorColor: operatorColor,
             ),
             TariffInfoGroup(
-              info: AppStrings.validityPeriod,
-              price: '1',
-              symbol: AppStrings.day,
+              info: LocaleKeys.validity_period.tr(),
+              price: data.period.toString(),
+              symbol: data.periodString,
               operatorColor: operatorColor,
             ),
             const SizedBox(height: 25.0),
@@ -58,7 +74,7 @@ class OperatorTariffCard extends StatelessWidget {
               width: double.infinity,
               height: 46.0,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => launchPhoneDialer(data.code),
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6.0),
@@ -66,7 +82,7 @@ class OperatorTariffCard extends StatelessWidget {
                   backgroundColor: operatorColor,
                 ),
                 child: Text(
-                  AppStrings.connect,
+                  LocaleKeys.connect.tr(),
                   style: const TextStyle(
                     fontSize: 17.0,
                     color: Colors.white,

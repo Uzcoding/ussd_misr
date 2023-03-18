@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ussd_misr/app/data/mock/vodafone_data.dart';
 
 import 'widgets/widgets.dart';
 
@@ -25,7 +26,12 @@ class ServiceScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: operatorColor,
-        title: Text(operatorName),
+        title: Text(
+          operatorName,
+          style: const TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -37,26 +43,29 @@ class ServiceScreen extends StatelessWidget {
                   vertical: 8.0,
                   horizontal: 10.0,
                 ),
-                itemCount: 5,
+                itemCount: 2,
                 scrollDirection: Axis.horizontal,
                 separatorBuilder: (context, index) =>
                     const SizedBox(width: 10.0),
                 itemBuilder: (context, index) => OperatorCategoryButton(
                   activeColor: operatorColor,
                   isActive: index % 2 == 0,
+                  text: index == 0 ? 'Tariffs' : 'Internet',
                 ),
               ),
             ),
             Expanded(
               child: ListView.separated(
-                itemCount: 10,
+                itemCount: VodafoneData.internetBundles.length,
                 padding: const EdgeInsets.symmetric(
                   vertical: 24.0,
                 ).copyWith(top: 14.0),
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 15.0),
-                itemBuilder: (context, index) =>
-                    OperatorTariffCard(operatorColor: operatorColor),
+                itemBuilder: (context, index) => OperatorInternetCard(
+                  operatorColor: operatorColor,
+                  data: VodafoneData.internetBundles[index],
+                ),
               ),
             ),
           ],
