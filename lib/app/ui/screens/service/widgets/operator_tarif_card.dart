@@ -1,31 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-import 'package:ussd_misr/app/domain/models/internet_bundle.dart';
+
+import 'package:ussd_misr/app/domain/models/tariff.dart';
+import 'package:ussd_misr/app/ui/utils/launch_phone.dart';
 
 import 'package:ussd_misr/translations/locale_keys.g.dart';
 
 import 'tariff_group.dart';
 
-class OperatorInternetCard extends StatelessWidget {
-  const OperatorInternetCard({
+class OperatorTariffCard extends StatelessWidget {
+  const OperatorTariffCard({
     Key? key,
     required this.operatorColor,
     required this.data,
   }) : super(key: key);
 
-  final InternetBundle data;
+  final Tariff data;
   final Color operatorColor;
-
-  Future<void> launchPhoneDialer(String contactNumber) async {
-    final result = 'tel://$contactNumber';
-    try {
-      await launchUrlString(result);
-    } catch (error) {
-      debugPrint(error.toString());
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,15 +51,26 @@ class OperatorInternetCard extends StatelessWidget {
             TariffInfoGroup(
               info: LocaleKeys.traffic_volume.tr(),
               price: data.internetTraffic.toString(),
-              symbol: 'MB',
+              symbol: data.internetTrafficMeasure,
               operatorColor: operatorColor,
             ),
             TariffInfoGroup(
               info: LocaleKeys.validity_period.tr(),
-              price: data.period.toString(),
-              symbol: data.periodString,
+              price: '1',
+              symbol: LocaleKeys.month.tr(),
               operatorColor: operatorColor,
             ),
+            if (data.bonus != null) ...[
+              const SizedBox(height: 15.0),
+              Text(
+                'Bonuslar: ${data.bonus?.join(', ')}',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                  color: operatorColor,
+                ),
+              ),
+            ],
             const SizedBox(height: 25.0),
             SizedBox(
               width: double.infinity,

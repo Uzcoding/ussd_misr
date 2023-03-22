@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:ussd_misr/app/app.dart';
 import 'package:ussd_misr/app/domain/models/operator.dart';
+import 'package:ussd_misr/app/ui/screens/screens.dart';
 
 class OperatorCard extends StatelessWidget {
   const OperatorCard({
@@ -16,10 +17,11 @@ class OperatorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkMode = context.watch<AppState>().isDarkMode;
     return ElevatedButton(
-      onPressed: () => Navigator.pushNamed(
+      onPressed: () => Navigator.push(
         context,
-        '/service',
-        arguments: operatorData.name,
+        MaterialPageRoute(
+          builder: (context) => ServiceScreen(operatorData: operatorData),
+        ),
       ),
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.zero,

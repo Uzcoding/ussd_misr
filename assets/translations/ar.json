@@ -11,9 +11,10 @@
     "rate": "معدل التطبيق",
     "share": "مشاركة التطبيق",
     "collection": "جمع",
-    "traffic_volume": "النظر في حجم حركة المرور",
+    "traffic_volume": "حجم حركة المرور",
     "validity_period": "تاريخ انتهاء الصلاحية",
     "day": "اليوم",
+    "month": "شهر",
     "connect": "اتصال",
     "save": "حفظ",
     "change_language": "اختر لغة"

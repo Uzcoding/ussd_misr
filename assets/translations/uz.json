@@ -11,9 +11,10 @@
     "rate": "Ilovaga baho berish",
     "share": "Ilovani ulashish",
     "collection": "To'plam",
-    "traffic_volume": "Berilgan trafik hajmi",
+    "traffic_volume": "Trafik hajmi",
     "validity_period": "Amal qilish muddati",
     "day": "kun",
+    "month": "oy",
     "connect": "Ulanish",
     "save": "Saqlash",
     "change_language": "Tilni tanlang"

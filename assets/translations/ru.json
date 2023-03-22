@@ -11,9 +11,10 @@
     "rate": "Оцените приложение",
     "share": "Поделитесь приложением",
     "collection": "Коллекция",
-    "traffic_volume": "Учитывая объем трафика",
+    "traffic_volume": "Объем трафика",
     "validity_period": "Срок годности",
     "day": "день",
+    "month": "месяц",
     "connect": "Связь",
     "save": "Сохранить",
     "change_language": "Выберите язык"

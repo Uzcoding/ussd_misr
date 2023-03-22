@@ -1,20 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ussd_misr/app/domain/models/operator.dart';
 import 'package:ussd_misr/app/ui/screens/screens.dart';
-import 'package:ussd_misr/resources/resources.dart';
+
 import 'package:ussd_misr/translations/locale_keys.g.dart';
 
 class TabScreen extends StatefulWidget {
   const TabScreen({Key? key}) : super(key: key);
-
-  static final operatorsList = [
-    Operator(name: 'Vodafone', icon: Svgs.vodafone),
-    Operator(name: 'We', icon: Svgs.we),
-    Operator(name: 'Etisalat', icon: Svgs.etisalat),
-    Operator(name: 'Orange', icon: Svgs.orange),
-  ];
 
   @override
   State<TabScreen> createState() => _TabScreenState();

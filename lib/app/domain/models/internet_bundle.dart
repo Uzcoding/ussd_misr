@@ -1,11 +1,11 @@
 class InternetBundle {
   final String name;
   final int price;
-  final int internetTraffic;
+  final double internetTraffic;
   final String internetTrafficMeasure;
   final String code;
   final int period;
-  final String periodString;
+  final bool isDay;
 
   InternetBundle({
     required this.name,
@@ -14,6 +14,6 @@ class InternetBundle {
     required this.internetTrafficMeasure,
     required this.code,
     required this.period,
-    required this.periodString,
+    required this.isDay,
   });
 }

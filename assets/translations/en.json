@@ -11,9 +11,10 @@
     "price": "price",
     "share": "Share app",
     "collection": "Collection",
-    "traffic_volume": "Given traffic volume",
+    "traffic_volume": "Traffic volume",
     "validity_period": "Validity period",
     "day": "day",
+    "month": "month",
     "connect": "Connect",
     "save": "Save",
     "change_language": "Change language"

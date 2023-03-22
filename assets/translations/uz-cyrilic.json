@@ -11,9 +11,10 @@
     "rate": "Иловага баҳо бериш",
     "share": "Иловани улашиш",
     "collection": "Тўплам",
-    "traffic_volume": "Берилган трафик ҳажми",
+    "traffic_volume": "Трафик ҳажми",
     "validity_period": "Амал қилиш муддати",
     "day": "кун",
+    "month": "ой",
     "connect": "Уланиш",
     "save": "Сақлаш",
     "change_language": "Тилни танланг"

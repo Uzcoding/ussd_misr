@@ -71,7 +71,7 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           '/': (context) => const TabScreen(),
-          '/service': (context) => const ServiceScreen(),
+          // '/service': (context) => const ServiceScreen(),
         },
         initialRoute: '/',
       ),

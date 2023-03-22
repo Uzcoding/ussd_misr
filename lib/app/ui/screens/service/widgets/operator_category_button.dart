@@ -7,18 +7,20 @@ class OperatorCategoryButton extends StatelessWidget {
     this.isActive = false,
     required this.activeColor,
     this.text = 'Tariifs',
+    required this.onTap,
   }) : super(key: key);
 
   final VoidCallback? onPressed;
   final bool isActive;
   final Color activeColor;
   final String text;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(50),
-      onTap: () {},
+      onTap: isActive ? null : onTap,
       child: Ink(
         padding: const EdgeInsets.symmetric(
           horizontal: 15.0,

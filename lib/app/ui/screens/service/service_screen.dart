@@ -1,10 +1,24 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:ussd_misr/app/data/mock/vodafone_data.dart';
+import 'package:ussd_misr/app/domain/models/category.dart';
+import 'package:ussd_misr/app/domain/models/operator.dart';
+
+import 'package:ussd_misr/app/ui/screens/service/widgets/operator_tarif_card.dart';
 
 import 'widgets/widgets.dart';
 
-class ServiceScreen extends StatelessWidget {
-  const ServiceScreen({Key? key}) : super(key: key);
+class ServiceScreen extends StatefulWidget {
+  final Operator operatorData;
+  const ServiceScreen({Key? key, required this.operatorData}) : super(key: key);
+
+  @override
+  State<ServiceScreen> createState() => _ServiceScreenState();
+}
+
+class _ServiceScreenState extends State<ServiceScreen> {
+  int _selectedCategoryIndex = 0;
+
+  List data = [];
 
   Color getOperatorColor(String operatorName) {
     switch (operatorName.toLowerCase()) {
@@ -19,10 +33,61 @@ class ServiceScreen extends StatelessWidget {
     }
   }
 
+  void selectCategory(int newIndex, Operator operatorData) {
+    _selectedCategoryIndex = newIndex;
+
+    if (newIndex == 0) {
+      if (operatorData.categories[0].name == 'Tarifs') {
+        data = operatorData.tariffs!;
+      } else if (operatorData.categories[0].name == 'Internet') {
+        data = operatorData.internetBundles!;
+      } else {
+        data = operatorData.othersData;
+      }
+    } else if (newIndex == 1) {
+      if (operatorData.categories[1].name == 'Tarifs') {
+        data = operatorData.tariffs!;
+      } else if (operatorData.categories[1].name == 'Internet') {
+        data = operatorData.internetBundles!;
+      } else {
+        data = operatorData.othersData;
+      }
+    } else {
+      data = operatorData.othersData;
+    }
+
+    setState(() {});
+  }
+
+  String getCurrentLanguageName(Locale currentLocale, Category category) {
+    switch (currentLocale.toString()) {
+      case 'ru':
+        return category.nameRu;
+      case 'uz':
+        return category.nameUz;
+      case 'uz_cyrilic':
+        return category.nameUzCyrilic;
+      case 'ar':
+        return category.nameAr;
+
+      default:
+        return category.name;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    selectCategory(0, widget.operatorData);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final operatorName = ModalRoute.of(context)!.settings.arguments as String;
+    final operatorName = widget.operatorData.name;
     final operatorColor = getOperatorColor(operatorName);
+    final categories = widget.operatorData.categories;
+    final selectedCategory = categories[_selectedCategoryIndex];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: operatorColor,
@@ -43,29 +108,43 @@ class ServiceScreen extends StatelessWidget {
                   vertical: 8.0,
                   horizontal: 10.0,
                 ),
-                itemCount: 2,
+                itemCount: categories.length,
                 scrollDirection: Axis.horizontal,
                 separatorBuilder: (context, index) =>
                     const SizedBox(width: 10.0),
                 itemBuilder: (context, index) => OperatorCategoryButton(
+                  onTap: () => selectCategory(index, widget.operatorData),
                   activeColor: operatorColor,
-                  isActive: index % 2 == 0,
-                  text: index == 0 ? 'Tariffs' : 'Internet',
+                  isActive: _selectedCategoryIndex == index,
+                  text:
+                      getCurrentLanguageName(context.locale, categories[index]),
                 ),
               ),
             ),
             Expanded(
               child: ListView.separated(
-                itemCount: VodafoneData.internetBundles.length,
+                clipBehavior: Clip.hardEdge,
+                itemCount: data.length,
                 padding: const EdgeInsets.symmetric(
                   vertical: 24.0,
                 ).copyWith(top: 14.0),
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 15.0),
-                itemBuilder: (context, index) => OperatorInternetCard(
-                  operatorColor: operatorColor,
-                  data: VodafoneData.internetBundles[index],
-                ),
+                itemBuilder: (context, index) =>
+                    selectedCategory.name == 'Tarifs'
+                        ? OperatorTariffCard(
+                            operatorColor: operatorColor,
+                            data: data[index],
+                          )
+                        : selectedCategory.name == 'Internet'
+                            ? OperatorInternetCard(
+                                operatorColor: operatorColor,
+                                data: data[index],
+                              )
+                            : OtherCard(
+                                operatorColor: operatorColor,
+                                data: data[index],
+                              ),
               ),
             ),
           ],

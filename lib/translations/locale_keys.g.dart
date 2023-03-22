@@ -16,6 +16,7 @@ abstract class  LocaleKeys {
   static const traffic_volume = 'traffic_volume';
   static const validity_period = 'validity_period';
   static const day = 'day';
+  static const month = 'month';
   static const connect = 'connect';
   static const save = 'save';
   static const change_language = 'change_language';
