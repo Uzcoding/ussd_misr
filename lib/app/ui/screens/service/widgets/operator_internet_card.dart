@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import 'package:url_launcher/url_launcher_string.dart';
 import 'package:ussd_misr/app/domain/models/internet_bundle.dart';
 import 'package:ussd_misr/app/ui/utils/launch_phone.dart';
 
